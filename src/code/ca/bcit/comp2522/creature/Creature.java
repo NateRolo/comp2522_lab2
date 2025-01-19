@@ -96,7 +96,9 @@ public class Creature
 
     /**
      * Calculates the creature's age in years based on its date of birth.
-     *
+     * <p>
+     * If creature's birthday has not passed in current year, subtract 1 from age.
+     *</p>
      * @return the creature's age in years based on its date of birth.
      */
     public int getAgeYears()
@@ -110,16 +112,16 @@ public class Creature
         monthBorn = dateOfBirth.getMonthAsInt();
         dayBorn = dateOfBirth.getDay();
 
-        /*
-         * need to implement code to calculate if
-         * I need to subtract 1 based on if birthdate has passed.
-         */
-
-        ageInYears = yearBorn - CURRENT_YEAR;
-
-        if(monthBorn > CURRENT_MONTH)
+        if(monthBorn > CURRENT_MONTH ||
+           (monthBorn == CURRENT_MONTH &&
+            dayBorn > CURRENT_DAY))
         {
-
+            ageInYears = yearBorn - CURRENT_YEAR -
+                         BIRTHDAY_NOT_PASSED_OFFSET;
+        }
+        else
+        {
+            ageInYears = yearBorn - CURRENT_YEAR;
         }
 
         return ageInYears;
@@ -127,11 +129,12 @@ public class Creature
 
     /**
      * Print's the creature's name, dateOfBirth, age, and health.
-     *
+     * <p>
      * E.g. Spyro
      *      Born: Wednesday September 9, 1998
      *      Age: 26
      *      Health : 100
+     * </p>
      */
     public void getDetails()
     {
