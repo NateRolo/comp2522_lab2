@@ -1,5 +1,6 @@
 package ca.bcit.comp2522.creature;
 
+
 public class Dragon extends Creature
 {
     private static final int MINIMUM_FIRE_POWER;
@@ -17,6 +18,19 @@ public class Dragon extends Creature
 
     private int firePower;
 
+    /**
+     * Constructs a new {@code Dragon} instance with the
+     * specified attributes. Calls {@code Creature} constructor
+     * and adds firePower instance variable.
+     *
+     * @param name the name of the dragon. Cannot be null or empty,
+     * @param dateOfBirth the date the dragon was born.
+     *                    Cannot be null or in the future.
+     * @param health the health of the dragon, represented as an integer.
+     *               Cannot be less than 0 or greater than 100.
+     * @param firePower the firepower of the dragon.
+     *                  Validated by the {@code validateFirePower(int)} method.
+     */
     public Dragon(final String name,
                   final Date dateOfBirth,
                   final int health,
@@ -29,14 +43,13 @@ public class Dragon extends Creature
         this.firePower = firePower;
     }
 
-
     /**
      * Prints the dragon's name, dateOfBirth, age, health, and fire power.
-     *
+     * <p>
      * Overrides {@code Creature} classes getDetails()
      * by calling {@code Creature}'s getDetails() and appends
      * the dragon's fire power to the output.
-     *
+     * </p>
      * <p>
      * E.g. Spyro
      *      Born: Wednesday September 9, 1998
