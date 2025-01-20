@@ -7,6 +7,7 @@ public class Dragon extends Creature
     private static final int MAXIMUM_FIRE_POWER;
     private static final int BREATHE_FIRE_COST;
     private static final int BREATHE_FIRE_DAMAGE;
+    private static final int MINIMUM_RESTORE_FIREPOWER;
 
     static
     {
@@ -14,6 +15,7 @@ public class Dragon extends Creature
         MAXIMUM_FIRE_POWER = 100;
         BREATHE_FIRE_COST = 10;
         BREATHE_FIRE_DAMAGE = 20;
+        MINIMUM_RESTORE_FIREPOWER = 1;
     }
 
     private int firePower;
@@ -90,14 +92,38 @@ public class Dragon extends Creature
     {
         if(firePower < BREATHE_FIRE_COST)
         {
-            throw new LowFirePowerException("You need at least" +
+            throw new LowFirePowerException("You need at least " +
                                             BREATHE_FIRE_COST +
-                                            "to breathe fire.");
+                                            " to breathe fire.");
         }
 
         firePower -= BREATHE_FIRE_COST;
 
         return BREATHE_FIRE_DAMAGE;
+    }
+
+    /**
+     * Increases firePower but cannot exceed 100.
+     *
+     * Verifies that restore fire power amount is not negative or 0.
+     *
+     * @param amount the amount of firePower to restore as an int.
+     */
+    public void restoreFirePower(int amount)
+    {
+        if(amount < MINIMUM_RESTORE_FIREPOWER)
+        {
+            throw new IllegalArgumentException("Cannot restore fire power" +
+                                               " by value of " +
+                                               amount);
+        }
+
+        firePower += amount;
+
+        if(firePower > MAXIMUM_FIRE_POWER)
+        {
+            firePower = MAXIMUM_FIRE_POWER;
+        }
     }
 
     private static void validateFirePower(final int firePower)
