@@ -214,6 +214,12 @@ public class Creature
         }
     }
 
+    /*
+     * Validates creature's health.
+     *
+     * If health is less than 0 or greater than 100,
+     * throw an unchecked IllegalArgumentException.
+     */
     private static void validateHealth(final int health)
     {
         if (health < MINIMUM_HEALTH)
