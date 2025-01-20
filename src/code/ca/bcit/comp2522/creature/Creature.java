@@ -14,7 +14,6 @@ public class Creature
 
     private static final int MINIMUM_DAMAGE;
 
-
     static
     {
         CURRENT_DATE = new Date(2025, 1, 16);
