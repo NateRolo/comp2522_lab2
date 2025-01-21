@@ -103,19 +103,25 @@ public class Elf extends Creature
     /*
      * Validates Elf's mana.
      *
-     * If Mana is less than 0 or greater than 50,
+     * If Mana is less than MINIMUM_MANA or greater than MAXIMUM_MANA,
      * throw an unchecked IllegalArgumentException.
      */
     private static void validateMana(final int mana)
     {
-        if (mana > MAXIMUM_MANA)
+        final boolean manaExceedsMaximum;
+        final boolean manaLowerThanMinimum;
+
+        manaExceedsMaximum = mana > MAXIMUM_MANA;
+        manaLowerThanMinimum = mana < MINIMUM_MANA;
+
+        if (manaExceedsMaximum)
         {
             throw new IllegalArgumentException("Cannot set mana to " +
                                                "value greater than " +
                                                MAXIMUM_MANA);
         }
 
-        if (mana < MINIMUM_MANA)
+        if (manaLowerThanMinimum)
         {
             throw new IllegalArgumentException("Cannot set mana to " +
                                                "value less than " +
