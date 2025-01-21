@@ -89,7 +89,7 @@ public class Elf extends Creature
      * </p>
      * @param amount the amount of mana to restore as an int.
      */
-    public void restoreFirePower(int amount)
+    public void restoreMana(int amount)
     {
         if (amount < MINIMUM_RESTORE_MANA) {
             throw new IllegalArgumentException("Cannot restore fire power" +
