@@ -61,6 +61,12 @@ public class Orc extends Creature
         this.rage = rage;
     }
 
+    /**
+     * Prints the Orc's name, dateOfBirth, age, health, and rage.
+     * <p>
+     * Overrides {@code getDetails()} from {@code Creature} class.
+     * </p>
+     */
     @Override
     public void getDetails()
     {
