@@ -139,9 +139,9 @@ public class Elf extends Creature
     }
 
     /**
-     * Increases mana but cannot exceed 50.
+     * Increases mana but cannot exceed {@code MAXIMUM_MANA}.
      * <p>
-     * Verifies that restore mana amount is not negative or 0.
+     * Verifies that restore mana amount is not less than {@code MINIMUM_MANA}.
      * </p>
      * @param amount the amount of mana to restore as an int.
      */
