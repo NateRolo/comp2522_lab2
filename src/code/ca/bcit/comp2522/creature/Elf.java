@@ -91,14 +91,17 @@ public class Elf extends Creature
      */
     public void restoreMana(int amount)
     {
-        if (amount < MINIMUM_RESTORE_MANA)
+        final boolean manaExceedsMaximum;
+        final boolean amountLesserThanMinimum;
+
+        amountLesserThanMinimum = amount < MINIMUM_RESTORE_MANA;
+
+        if (amountLesserThanMinimum)
         {
             throw new IllegalArgumentException("Cannot restore mana" +
                     " by value of " +
                     amount);
         }
-
-        final boolean manaExceedsMaximum;
 
         manaExceedsMaximum = mana + amount > MAXIMUM_MANA;
 
