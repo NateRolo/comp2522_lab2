@@ -11,9 +11,6 @@ public class Elf extends Creature
 
     private int mana;
 
-    /**
-     *
-     */
     static
     {
         MAXIMUM_MANA = 50;
