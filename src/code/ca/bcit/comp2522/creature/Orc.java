@@ -61,6 +61,27 @@ public class Orc extends Creature
         this.rage = rage;
     }
 
+    @Override
+    public void getDetails()
+    {
+        super.getDetails();
+
+        super.getDetails();
+
+        final StringBuilder detailsBuilder;
+        final String orcDetails;
+
+        detailsBuilder = new StringBuilder();
+
+        detailsBuilder
+                .append("\n")
+                .append("Rage: ")
+                .append(this.rage);
+
+        orcDetails = detailsBuilder.toString();
+
+        System.out.println(orcDetails);
+    }
     /*
      * Validates the given rage value to ensure it falls within allowable
      * boundaries.
