@@ -105,11 +105,13 @@ public class Elf extends Creature
 
         manaExceedsMaximum = mana + amount > MAXIMUM_MANA;
 
+        mana += amount;
+
         if (manaExceedsMaximum) {
             mana = MAXIMUM_MANA;
         }
 
-        mana += amount;
+
     }
 
     /*
