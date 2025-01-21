@@ -64,9 +64,13 @@ public class Elf extends Creature
      * @return damage to other creature as an int.
      * @throws LowManaException if elf does not have enouhg mana to cast spell.
      */
-    public int castSpell() throws LowManaException
+    public void castSpell(final Creature opponent) throws LowManaException
     {
-        if(mana < CAST_SPELL_COST)
+        final boolean insufficientMana;
+
+        insufficientMana = mana < CAST_SPELL_COST;
+
+        if (insufficientMana)
         {
             throw new LowManaException("You need at least " +
                                        CAST_SPELL_COST +
@@ -75,7 +79,7 @@ public class Elf extends Creature
 
         mana -= CAST_SPELL_COST;
 
-        return CAST_SPELL_DAMAGE;
+        opponent.takeDamage(CAST_SPELL_DAMAGE);
     }
 
     /**
