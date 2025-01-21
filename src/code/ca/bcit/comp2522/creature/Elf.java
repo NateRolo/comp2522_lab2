@@ -91,17 +91,22 @@ public class Elf extends Creature
      */
     public void restoreMana(int amount)
     {
-        if (amount < MINIMUM_RESTORE_MANA) {
-            throw new IllegalArgumentException("Cannot restore fire power" +
-                                               " by value of " +
-                                               amount);
+        if (amount < MINIMUM_RESTORE_MANA)
+        {
+            throw new IllegalArgumentException("Cannot restore mana" +
+                    " by value of " +
+                    amount);
+        }
+
+        final boolean manaExceedsMaximum;
+
+        manaExceedsMaximum = mana + amount > MAXIMUM_MANA;
+
+        if (manaExceedsMaximum) {
+            mana = MAXIMUM_MANA;
         }
 
         mana += amount;
-
-        if (mana > MAXIMUM_MANA) {
-            mana = MAXIMUM_MANA;
-        }
     }
 
     /*
@@ -132,7 +137,4 @@ public class Elf extends Creature
                                                MINIMUM_MANA);
         }
     }
-
-
-
 }
