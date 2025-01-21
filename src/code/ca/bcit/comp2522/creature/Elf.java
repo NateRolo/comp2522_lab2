@@ -64,9 +64,13 @@ public class Elf extends Creature
      * @return damage to other creature as an int.
      * @throws LowManaException if elf does not have enouhg mana to cast spell.
      */
-    public int castSpell() throws LowManaException
+    public void castSpell(final Creature opponent) throws LowManaException
     {
-        if(mana < CAST_SPELL_COST)
+        final boolean insufficientMana;
+
+        insufficientMana = mana < CAST_SPELL_COST;
+
+        if (insufficientMana)
         {
             throw new LowManaException("You need at least " +
                                        CAST_SPELL_COST +
@@ -75,7 +79,7 @@ public class Elf extends Creature
 
         mana -= CAST_SPELL_COST;
 
-        return CAST_SPELL_DAMAGE;
+        opponent.takeDamage(CAST_SPELL_DAMAGE);
     }
 
     /**
@@ -85,44 +89,55 @@ public class Elf extends Creature
      * </p>
      * @param amount the amount of mana to restore as an int.
      */
-    public void restoreFirePower(int amount)
+    public void restoreMana(int amount)
     {
-        if (amount < MINIMUM_RESTORE_MANA) {
-            throw new IllegalArgumentException("Cannot restore fire power" +
-                                               " by value of " +
-                                               amount);
+        final boolean manaExceedsMaximum;
+        final boolean amountLesserThanMinimum;
+
+        amountLesserThanMinimum = amount < MINIMUM_RESTORE_MANA;
+
+        if (amountLesserThanMinimum)
+        {
+            throw new IllegalArgumentException("Cannot restore mana" +
+                    " by value of " +
+                    amount);
+        }
+
+        manaExceedsMaximum = mana + amount > MAXIMUM_MANA;
+
+        if (manaExceedsMaximum) {
+            mana = MAXIMUM_MANA;
         }
 
         mana += amount;
-
-        if (mana > MAXIMUM_MANA) {
-            mana = MAXIMUM_MANA;
-        }
     }
 
     /*
      * Validates Elf's mana.
      *
-     * If Mana is less than 0 or greater than 50,
+     * If Mana is less than MINIMUM_MANA or greater than MAXIMUM_MANA,
      * throw an unchecked IllegalArgumentException.
      */
     private static void validateMana(final int mana)
     {
-        if (mana > MAXIMUM_MANA)
+        final boolean manaExceedsMaximum;
+        final boolean manaLowerThanMinimum;
+
+        manaExceedsMaximum = mana > MAXIMUM_MANA;
+        manaLowerThanMinimum = mana < MINIMUM_MANA;
+
+        if (manaExceedsMaximum)
         {
             throw new IllegalArgumentException("Cannot set mana to " +
                                                "value greater than " +
                                                MAXIMUM_MANA);
         }
 
-        if (mana < MINIMUM_MANA)
+        if (manaLowerThanMinimum)
         {
             throw new IllegalArgumentException("Cannot set mana to " +
                                                "value less than " +
                                                MINIMUM_MANA);
         }
     }
-
-
-
 }

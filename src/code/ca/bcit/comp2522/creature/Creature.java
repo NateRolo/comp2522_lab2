@@ -60,11 +60,12 @@ public class Creature
         return true;
     }
 
-    /*
-     * Reduces health by damage. If health goes below 0, set it to 0.
+    /**
+     * Reduces health by damage. If health goes below {@code NO_HEALTH},
+     * set it to {@code NO_HEALTH}.
      * If damage is negative, throw unchecked DamageException.
      */
-    private void takeDamage(final int damage)
+    void takeDamage(final int damage)
     {
         if(damage < MINIMUM_DAMAGE)
         {
