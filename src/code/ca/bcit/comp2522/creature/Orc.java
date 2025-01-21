@@ -25,12 +25,24 @@ public class Orc extends Creature
     private static final int MAXIMUM_RAGE;
     private static final int MINIMUM_RAGE;
 
+    private static final int RAGE_INCREASE_INCREMENT;
+    private static final int DOUBLE_DAMAGE_THRESHOLD;
+    private static final int LOW_RAGE_VALUE;
+    private static final int DOUBLE_DAMAGE_BONUS;
+    private static final int BESERK_DAMAGE;
+
     private int rage;
 
     static
     {
         MAXIMUM_RAGE = 30;
         MINIMUM_RAGE = 0;
+
+        RAGE_INCREASE_INCREMENT = 5;
+        DOUBLE_DAMAGE_THRESHOLD = 20;
+        LOW_RAGE_VALUE = 5;
+        DOUBLE_DAMAGE_BONUS = 15;
+        BESERK_DAMAGE = 15;
     }
 
     /**
@@ -87,6 +99,41 @@ public class Orc extends Creature
         orcDetails = detailsBuilder.toString();
 
         System.out.println(orcDetails);
+    }
+
+    /**
+     * Increase rage by {@code increaseRage}.
+     * <p>
+     *     If rage exceeds {@code DOUBLE_DAMAGE_THRESHOLD},
+     *     deal {@code DOUBLE_DAMAGE_AMOUNT} to a creature.
+     * </p>
+     * <p>
+     *     If rage is below {@code LOW_RAGE_VALUE},
+     *     throw an unchecked LowRageException.
+     * </p>
+     *
+     */
+    public void beserk(final Creature opponent)
+    {
+        final boolean rageExceedsDoubleDamageThreshold;
+        final boolean rageIsLow;
+
+        rageExceedsDoubleDamageThreshold = rage > DOUBLE_DAMAGE_THRESHOLD;
+        rageIsLow = rage < LOW_RAGE_VALUE;
+
+        rage += RAGE_INCREASE_INCREMENT;
+
+        if(rageIsLow)
+        {
+            throw new LowRageException("Rage is too low to use beserk.");
+        }
+
+        opponent.takeDamage(BESERK_DAMAGE);
+
+        if(rageExceedsDoubleDamageThreshold)
+        {
+            opponent.takeDamage(DOUBLE_DAMAGE_BONUS);
+        }
     }
     /*
      * Validates the given rage value to ensure it falls within allowable
