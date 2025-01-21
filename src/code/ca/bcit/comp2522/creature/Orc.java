@@ -1,5 +1,25 @@
 package ca.bcit.comp2522.creature;
 
+/**
+ * The {@code Orc} class represents a type of creature with unique rage
+ * attributes.
+ *
+ * <p>An {@code Orc} extends the {@code Creature} class and introduces a
+ * rage mechanic, which is validated and managed through this class. Rage
+ * must remain within defined boundaries.</p>
+ *
+ * <p>The {@code Orc} class provides:</p>
+ * <ul>
+ *   <li>Construction of an Orc with specified name, date of birth, health,
+ *       and rage.</li>
+ *   <li>Validation of rage to ensure it falls within allowable limits.</li>
+ * </ul>
+ *
+ * @author Kyle C
+ * @author Haider A
+ * @author Nathan O
+ * @version 1.0
+ */
 public class Orc extends Creature
 {
     private static final int MAXIMUM_RAGE;
@@ -13,6 +33,21 @@ public class Orc extends Creature
         MINIMUM_RAGE = 0;
     }
 
+    /**
+     * Constructs an {@code Orc} instance with the specified name, date of
+     * birth, health, and rage.
+     *
+     * @param name        the name of the Orc.
+     *                    Must not be null or empty.
+     * @param dateOfBirth the date of birth of the Orc.
+     *                    Must not be null.
+     * @param health      the health value of the Orc.
+     *                    Must be a positive
+     *                    integer.
+     * @param rage        the rage value of the Orc.
+     *                    Must meet the validation
+     *                    criteria defined in {@link #validateRage(int)}.
+     */
     public Orc(final String name,
                final Date dateOfBirth,
                final int health,
@@ -26,6 +61,17 @@ public class Orc extends Creature
         this.rage = rage;
     }
 
+    /*
+     * Validates the given rage value to ensure it falls within allowable
+     * boundaries.
+     *
+     * <p>This method checks that the rage value is between the predefined
+     * {@code MINIMUM_RAGE} and {@code MAXIMUM_RAGE}. If the value is
+     * invalid, an {@code IllegalArgumentException} is thrown.</p>
+     *
+     * @param rage the rage value to validate.
+     *
+     */
     private static void validateRage(final int rage)
     {
         final boolean rageExceedsMaximum;
