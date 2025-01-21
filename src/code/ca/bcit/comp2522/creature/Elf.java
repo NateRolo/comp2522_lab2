@@ -44,6 +44,7 @@ public class Elf extends Creature
         detailsBuilder = new StringBuilder();
 
         detailsBuilder
+                .append("\n")
                 .append("Mana: ")
                 .append(this.mana);
 
