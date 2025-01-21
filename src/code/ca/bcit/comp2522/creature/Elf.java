@@ -1,5 +1,35 @@
 package ca.bcit.comp2522.creature;
 
+/**
+ * The {@code Elf} class represents a magical creature with health, mana, and
+ * spell-casting abilities.
+ *
+ * <p>This class extends the {@code Creature} class, adding unique properties
+ * and behaviors specific to an Elf, such as managing mana, casting spells,
+ * and restoring mana.</p>
+ *
+ * <p>The {@code Elf} class provides the following functionality:</p>
+ * <ul>
+ *   <li>Constructing an Elf with specific attributes such as name, date of
+ *       birth, health, and mana.</li>
+ *   <li>Overriding {@code getDetails()} to include additional Elf-specific
+ *       attributes.</li>
+ *   <li>Casting spells that reduce mana and deal damage to opponents.</li>
+ *   <li>Restoring mana while adhering to defined limits.</li>
+ * </ul>
+ *
+ * <p>All input values are validated to ensure they meet the constraints
+ * defined for an Elf, such as mana boundaries. Exceptions are thrown for
+ * invalid inputs.</p>
+ *
+ * <p>This class relies on the {@code LowManaException} to signal situations
+ * where an Elf attempts to cast a spell without sufficient mana.</p>
+ *
+ * @author Haider A
+ * @author Kyle C
+ * @author Nathan O
+ * @version 1.0
+ */
 public class Elf extends Creature
 {
     private static final int MAXIMUM_MANA;
@@ -21,6 +51,27 @@ public class Elf extends Creature
         CAST_SPELL_DAMAGE = 10;
     }
 
+    /**
+     * Constructs an {@code Elf} instance with the specified name,
+     * date of birth, health, and mana.
+     *
+     * @param name        the name of the Elf.
+     *                    Must not be null or empty.
+     * @param dateOfBirth the date of birth of the Elf.
+     *                    Must not be null.
+     * @param health      the health value of the Elf.
+     *                    Must be a positive integer.
+     * @param mana        the mana value of the Elf.
+     *                    Must meet the validation criteria defined in
+     *                    {@link #validateMana(int)}.
+     *
+     * @throws IllegalArgumentException if any of the parameters are invalid:
+     *                                  - {@code name} is null or empty.
+     *                                  - {@code dateOfBirth} is null.
+     *                                  - {@code health} is non-positive.
+     *                                  - {@code mana} fails validation in
+     *                                  {@link #validateMana(int)}.
+     */
     public Elf(final String name,
                final Date dateOfBirth,
                final int health,
@@ -33,6 +84,12 @@ public class Elf extends Creature
         this.mana = mana;
     }
 
+    /**
+     * Prints the Elf's name, dateOfBirth, age, health, and mana.
+     * <p>
+     * Overrides {@code getDetails()} from {@code Creature} class.
+     * </p>
+     */
     @Override
     public void getDetails()
     {
@@ -61,8 +118,7 @@ public class Elf extends Creature
      *     checked LowManaException.
      * </p>
      *
-     * @return damage to other creature as an int.
-     * @throws LowManaException if elf does not have enouhg mana to cast spell.
+     * @throws LowManaException if elf does not have enough mana to cast spell.
      */
     public void castSpell(final Creature opponent) throws LowManaException
     {

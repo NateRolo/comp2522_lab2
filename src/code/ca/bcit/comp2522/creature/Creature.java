@@ -35,6 +35,22 @@ public class Creature
 
     private int health;
 
+    /**
+     * Constructs a {@code Creature} instance with the specified
+     * name, date of birth, and health.
+     *
+     * @param name        the name of the Creature.
+     *                    Must not be null or empty.
+     * @param dateOfBirth the date of birth of the Creature.
+     *                    Must not be null.
+     * @param health      the health value of the Creature.
+     *                    Must be a positive integer.
+     *
+     * @throws IllegalArgumentException if any of the parameters are invalid:
+     *                                  - {@code name} is null or empty.
+     *                                  - {@code dateOfBirth} is null.
+     *                                  - {@code health} is non-positive.
+     */
     public Creature(final String name,
                     final Date dateOfBirth,
                     final int health)
