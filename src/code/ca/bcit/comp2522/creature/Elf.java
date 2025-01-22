@@ -64,13 +64,6 @@ public class Elf extends Creature
      * @param mana        the mana value of the Elf.
      *                    Must meet the validation criteria defined in
      *                    {@link #validateMana(int)}.
-     *
-     * @throws IllegalArgumentException if any of the parameters are invalid:
-     *                                  - {@code name} is null or empty.
-     *                                  - {@code dateOfBirth} is null.
-     *                                  - {@code health} is non-positive.
-     *                                  - {@code mana} fails validation in
-     *                                  {@link #validateMana(int)}.
      */
     public Elf(final String name,
                final Date dateOfBirth,
