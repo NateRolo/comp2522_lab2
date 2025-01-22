@@ -37,9 +37,9 @@ package ca.bcit.comp2522.creature;
  *   <li>Invalid dates throw {@link IllegalArgumentException} during construction.</li>
  * </ul>
  *
- * @author Haider Al-Sudani
+ * @author Haider A
  * @author Kyle C
- * @author Nathan Oloresisimo
+ * @author Nathan O
  * @version 1.0
  */
 public class Date

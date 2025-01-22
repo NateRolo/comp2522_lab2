@@ -14,7 +14,6 @@ public class Creature
 
     private static final int MINIMUM_DAMAGE;
 
-
     static
     {
         CURRENT_DATE = new Date(2025, 1, 16);
@@ -36,6 +35,22 @@ public class Creature
 
     private int health;
 
+    /**
+     * Constructs a {@code Creature} instance with the specified
+     * name, date of birth, and health.
+     *
+     * @param name        the name of the Creature.
+     *                    Must not be null or empty.
+     * @param dateOfBirth the date of birth of the Creature.
+     *                    Must not be null.
+     * @param health      the health value of the Creature.
+     *                    Must be a positive integer.
+     *
+     * @throws IllegalArgumentException if any of the parameters are invalid:
+     *                                  - {@code name} is null or empty.
+     *                                  - {@code dateOfBirth} is null.
+     *                                  - {@code health} is non-positive.
+     */
     public Creature(final String name,
                     final Date dateOfBirth,
                     final int health)
@@ -61,11 +76,12 @@ public class Creature
         return true;
     }
 
-    /*
-     * Reduces health by damage. If health goes below 0, set it to 0.
+    /**
+     * Reduces health by damage. If health goes below {@code NO_HEALTH},
+     * set it to {@code NO_HEALTH}.
      * If damage is negative, throw unchecked DamageException.
      */
-    private void takeDamage(final int damage)
+    void takeDamage(final int damage)
     {
         if(damage < MINIMUM_DAMAGE)
         {
@@ -215,6 +231,12 @@ public class Creature
         }
     }
 
+    /*
+     * Validates creature's health.
+     *
+     * If health is less than 0 or greater than 100,
+     * throw an unchecked IllegalArgumentException.
+     */
     private static void validateHealth(final int health)
     {
         if (health < MINIMUM_HEALTH)
