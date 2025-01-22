@@ -84,8 +84,6 @@ public class Orc extends Creature
     {
         super.getDetails();
 
-        super.getDetails();
-
         final StringBuilder detailsBuilder;
         final String orcDetails;
 
