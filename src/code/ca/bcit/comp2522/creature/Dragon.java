@@ -25,13 +25,14 @@ public class Dragon extends Creature
      * specified attributes. Calls {@code Creature} constructor
      * and adds firePower instance variable.
      *
-     * @param name the name of the dragon. Cannot be null or empty,
-     * @param dateOfBirth the date the dragon was born.
-     *                    Cannot be null or in the future.
-     * @param health the health of the dragon, represented as an integer.
-     *               Cannot be less than 0 or greater than 100.
-     * @param firePower the firepower of the dragon.
-     *                  Validated by the {@code validateFirePower(int)} method.
+     * @param name         the name of the dragon.
+     *                     Cannot be null or empty,
+     * @param dateOfBirth  the date the dragon was born.
+     *                     Cannot be null or in the future.
+     * @param health       the health of the dragon, represented as an integer.
+     *                     Cannot be less than 0 or greater than 100.
+     * @param firePower    the firepower of the dragon.
+     *                     Validated by the {@code validateFirePower(int)} method.
      */
     public Dragon(final String name,
                   final Date dateOfBirth,
@@ -80,15 +81,16 @@ public class Dragon extends Creature
     }
 
     /**
-     * Reduces firePower by 10 and deals 20 damage to another creature.
+     * Reduces firePower by {@code BREATH_FIRE_COST}
+     * and deals @{BREATHE_FIRE_DAMAGE} damage to another creature.
      * <p>
-     *     If firePower is less than 10, throw a checked LowFirePowerException.
+     *     If firePower is less than {@code BREATHE_FIRE_COST},
+     *     throw a checked LowFirePowerException.
      * </p>
      *
-     * @return 20 damage to another creature.
      * @throws LowFirePowerException if dragon does not have enough fire power.
      */
-    public int breatheFire() throws LowFirePowerException
+    public void breatheFire(final Creature opponent) throws LowFirePowerException
     {
         if(firePower < BREATHE_FIRE_COST)
         {
@@ -99,13 +101,13 @@ public class Dragon extends Creature
 
         firePower -= BREATHE_FIRE_COST;
 
-        return BREATHE_FIRE_DAMAGE;
+        opponent.takeDamage(BREATHE_FIRE_DAMAGE);
     }
 
     /**
-     * Increases firePower but cannot exceed 100.
+     * Increases firePower but cannot exceed {@code MAXIMUM_FIRE_POWER}.
      *
-     * Verifies that restore fire power amount is not negative or 0.
+     * Verifies that restore fire power amount is valid.
      *
      * @param amount the amount of firePower to restore as an int.
      */
@@ -126,6 +128,13 @@ public class Dragon extends Creature
         }
     }
 
+    /*
+     * Validates {@code firePower} input.
+     *
+     * If firepower is less than {@code MINIMUM_FIRE_POWER}
+     * or greater than {@code MAXIMUM_FIRE_POWER},
+     * throw unchecked IllegalArgumentException.
+     */
     private static void validateFirePower(final int firePower)
     {
         if(firePower < MINIMUM_FIRE_POWER)
