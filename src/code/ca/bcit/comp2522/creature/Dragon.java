@@ -1,6 +1,37 @@
 package ca.bcit.comp2522.creature;
 
-
+/**
+ * The {@code Dragon} class represents a powerful creature capable of breathing
+ * fire.
+ *
+ * <p>
+ *     A {@code Dragon} extends the {@code Creature} class and adds unique
+*      attributes and abilities, such as firepower and the ability to breathe fire.
+*      The firepower is carefully managed and must fall within specified limits.
+ * </p>
+ *
+ * <p>The {@code Dragon} class provides the following functionality:</p>
+ * <ul>
+ *   <li>Construction of a Dragon with specific attributes, including name,
+ *       date of birth, health, and firepower.</li>
+ *   <li>Displaying detailed information about the Dragon, including its
+ *       firepower.</li>
+ *   <li>Breathing fire to attack opponents, reducing firepower by a fixed
+ *       cost.</li>
+ *   <li>Restoring firepower up to a maximum limit.</li>
+ * </ul>
+ *
+ * <p>
+ *     Firepower is validated to ensure it stays within the allowable range.
+ *     Exceptions are thrown for invalid inputs or actions, such as attempting to
+ *     breathe fire without sufficient firepower.
+ * </p>
+ *
+ * @author Haider A
+ * @author Kyle C
+ * @author Nathan O
+ * @version 1.0
+ */
 public class Dragon extends Creature
 {
     private static final int MINIMUM_FIRE_POWER;
@@ -51,7 +82,7 @@ public class Dragon extends Creature
      * <p>
      * Overrides {@code Creature} classes getDetails()
      * by calling {@code Creature}'s getDetails() and appends
-     * the dragon's fire power to the output.
+     * the dragon's firepower to the output.
      * </p>
      * <p>
      * E.g. Spyro
