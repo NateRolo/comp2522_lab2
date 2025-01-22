@@ -29,7 +29,7 @@ public class Orc extends Creature
     private static final int DOUBLE_DAMAGE_THRESHOLD;
     private static final int LOW_RAGE_VALUE;
     private static final int DOUBLE_DAMAGE_BONUS;
-    private static final int BESERK_DAMAGE;
+    private static final int BERSERK_DAMAGE;
 
     private int rage;
 
@@ -42,7 +42,7 @@ public class Orc extends Creature
         DOUBLE_DAMAGE_THRESHOLD = 20;
         LOW_RAGE_VALUE = 5;
         DOUBLE_DAMAGE_BONUS = 15;
-        BESERK_DAMAGE = 15;
+        BERSERK_DAMAGE = 15;
     }
 
     /**
@@ -111,7 +111,7 @@ public class Orc extends Creature
      * </p>
      *
      */
-    public void beserk(final Creature opponent)
+    public void berserk(final Creature opponent)
     {
         final boolean rageExceedsDoubleDamageThreshold;
         final boolean rageIsLow;
@@ -123,16 +123,17 @@ public class Orc extends Creature
 
         if(rageIsLow)
         {
-            throw new LowRageException("Rage is too low to use beserk.");
+            throw new LowRageException("Rage is too low to use berserk.");
         }
 
-        opponent.takeDamage(BESERK_DAMAGE);
+        opponent.takeDamage(BERSERK_DAMAGE);
 
         if(rageExceedsDoubleDamageThreshold)
         {
             opponent.takeDamage(DOUBLE_DAMAGE_BONUS);
         }
     }
+
     /*
      * Validates the given rage value to ensure it falls within allowable
      * boundaries.
