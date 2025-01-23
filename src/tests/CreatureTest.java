@@ -1,8 +1,4 @@
-import ca.bcit.comp2522.creature.Elf;
-import ca.bcit.comp2522.creature.Orc;
-import ca.bcit.comp2522.creature.Dragon;
-import ca.bcit.comp2522.creature.Date;
-import ca.bcit.comp2522.creature.Creature;
+import ca.bcit.comp2522.creature.*;
 
 /**
  *
@@ -69,6 +65,35 @@ public class CreatureTest
         elfExceptionTest();
         orcExceptionTest();
 
+        // Dragon breathes fire at Elf.
+        try
+        {
+            ((Dragon) testDragon).breatheFire(testElf);
+        }
+        catch(LowFirePowerException e)
+        {
+            System.out.println(e.getMessage());
+        }
+
+        // Elf casts spell at Orc.
+        try
+        {
+            ((Elf) testElf).castSpell(testOrc);
+        }
+        catch(LowManaException e)
+        {
+            System.out.println(e.getMessage());
+        }
+
+        // Orc goes berserk on Dragon.
+        try
+        {
+            ((Orc) testOrc).berserk(testDragon);
+        }
+        catch(LowRageException e)
+        {
+            System.out.println(e.getMessage());
+        }
     }
 
     private static void dateExceptionTest()
