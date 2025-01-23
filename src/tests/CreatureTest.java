@@ -64,6 +64,11 @@ public class CreatureTest
         System.out.println(testElfIsAnElf);
         System.out.println(testOrcIsAnOrc);
 
+        dateExceptionTest();
+        dragonExceptionTest();
+        elfExceptionTest();
+        orcExceptionTest();
+
     }
 
     private static void dateExceptionTest()
