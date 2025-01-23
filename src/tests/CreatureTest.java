@@ -4,6 +4,9 @@ import ca.bcit.comp2522.creature.Dragon;
 import ca.bcit.comp2522.creature.Date;
 import ca.bcit.comp2522.creature.Creature;
 
+/**
+ *
+ */
 public class CreatureTest
 {
     public static void main(final String[] args)
