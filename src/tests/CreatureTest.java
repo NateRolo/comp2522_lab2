@@ -19,6 +19,10 @@ public class CreatureTest
         final Creature testElf;
         final Creature testOrc;
 
+        final boolean testDragonIsADragon;
+        final boolean testElfIsAnElf;
+        final boolean testOrcIsAnOrc;
+
         dragonDateOfBirth = new Date(2000,
                                      1,
                                      1);
@@ -42,5 +46,136 @@ public class CreatureTest
                           orcDateOfBirth,
                           50,
                           20);
+
+
+        testDragonIsADragon = testDragon instanceof Dragon;
+        testElfIsAnElf = testElf instanceof Elf;
+        testOrcIsAnOrc = testOrc instanceof Orc;
+
+        testDragon.getDetails();
+        testElf.getDetails();
+        testOrc.getDetails();
+
+        System.out.println(testDragon.getClass());
+        System.out.println(testElf.getClass());
+        System.out.println(testOrc.getClass());
+
+        System.out.println(testDragonIsADragon);
+        System.out.println(testElfIsAnElf);
+        System.out.println(testOrcIsAnOrc);
+
+    }
+
+    private static void dateExceptionTest()
+    {
+        final Date invalidYear;
+        final Date invalidMonth;
+        final Date invalidDay;
+
+        try
+        {
+            invalidYear = new Date(1,
+                                   1,
+                                   1);
+        }
+        catch(final IllegalArgumentException ex)
+        {
+            System.out.println(ex.getMessage());
+        }
+
+        try
+        {
+            invalidMonth = new Date(2000,
+                                    -2,
+                                    1);
+        }
+        catch(final IllegalArgumentException ex)
+        {
+            System.out.println(ex.getMessage());
+        }
+
+        try
+        {
+            invalidDay = new Date(2000,
+                                    1,
+                                    -1);
+        }
+        catch(final IllegalArgumentException ex)
+        {
+            System.out.println(ex.getMessage());
+        }
+
+    }
+    private static void dragonExceptionTest()
+    {
+        final Date dragonDateOfBirth;
+        final Dragon exceptionDragon;
+
+        try
+        {
+            dragonDateOfBirth = new Date(2014,
+                                         10,
+                                         14);
+
+            exceptionDragon = new Dragon("Jeff",
+                                                dragonDateOfBirth,
+                                                100,
+                                                100);
+
+            exceptionDragon.restoreFirePower(-1);
+
+        }
+        catch(IllegalArgumentException ex)
+        {
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    private static void elfExceptionTest()
+    {
+        final Date elfDateOfBirth;
+        final Elf  exceptionElf;
+
+        try
+        {
+            elfDateOfBirth = new Date(2012,
+                                      12,
+                                      12);
+
+            exceptionElf = new Elf("Lou",
+                                   elfDateOfBirth,
+                                   100,
+                                   50);
+
+            exceptionElf.restoreMana(-1);
+
+        }
+        catch(final IllegalArgumentException ex)
+        {
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    private static void orcExceptionTest()
+    {
+        final Date orcDateOfBirth;
+        final Orc  exceptionOrc;
+
+        try
+        {
+            orcDateOfBirth = new Date(2000,
+                                      1,
+                                      1);
+
+            exceptionOrc = new Orc("Greg",
+                                   orcDateOfBirth,
+                                   50,
+                                   -5);
+        }
+        catch(IllegalArgumentException ex)
+        {
+            System.out.println(ex.getMessage());
+        }
+
     }
 }
