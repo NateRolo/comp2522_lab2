@@ -1,10 +1,27 @@
 import ca.bcit.comp2522.creature.*;
 
 /**
+ * {@code CreatureTest} serves as a test class for
+ * Creature, Dragon, Elf, and Orc classes. Showcases
+ * polymorphism and catching RuntimeExceptions.
  *
+ * @author Haider A
+ * @author Kyle C
+ * @author Nathan O
+ * @version 1.0
  */
 public class CreatureTest
 {
+
+    /**
+     * The entry point of the application.
+     * <p>
+     * Demonstrates polymorphic behavior of {@code Creature} objects,
+     * including type checking and exception handling when invoking methods
+     * specific to subclasses like {@code Dragon}, {@code Elf}, and {@code Orc}.
+     * </p>
+     * @param args command-line arguments (not used).
+     */
     public static void main(final String[] args)
     {
         final Date dragonDateOfBirth;
@@ -96,6 +113,11 @@ public class CreatureTest
         }
     }
 
+    /*
+     * Tests for invalid date inputs by creating
+     * {@code Date} objects with invalid values for
+     * year, month, and day. Prints exception messages.
+     */
     private static void dateExceptionTest()
     {
         final Date invalidYear;
@@ -136,6 +158,13 @@ public class CreatureTest
         }
 
     }
+
+    /*
+     * Tests for invalid {@code Dragon} operations.
+     *
+     * Attempts to restore firepower with invalid value
+     * and catches the exception thrown.
+     */
     private static void dragonExceptionTest()
     {
         final Date dragonDateOfBirth;
@@ -161,6 +190,12 @@ public class CreatureTest
         }
     }
 
+    /*
+     * Tests for invalid {@code Elf} operations.
+     *
+     * Attempts to restore mana with invalid value
+     * and catches the exception thrown.
+     */
     private static void elfExceptionTest()
     {
         final Date elfDateOfBirth;
@@ -186,6 +221,12 @@ public class CreatureTest
         }
     }
 
+    /*
+     * Tests for invalid {@code Orc} operations.
+     *
+     * Attempts to create an {@code Orc} with invalid rage value
+     * and catches the exception thrown.
+     */
     private static void orcExceptionTest()
     {
         final Date orcDateOfBirth;
