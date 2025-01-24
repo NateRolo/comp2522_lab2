@@ -95,7 +95,8 @@ public class Dragon extends Creature
 
         detailsBuilder
                      .append("Fire Power: ")
-                     .append(this.firePower);
+                     .append(this.firePower)
+                     .append("\n");
 
         dragonDetails = detailsBuilder.toString();
 

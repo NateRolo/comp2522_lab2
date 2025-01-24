@@ -7,7 +7,7 @@ package ca.bcit.comp2522.creature;
  * It provides methods to retrieve individual date components, format dates in various styles,
  * and calculate the day of the week using modular arithmetic.
  * </p>
- *
+ * <p>
  * Key Features:
  * <ul>
  *   <li>Validation for year (1800 to current year), month (1-12), and day (varies by month/year).</li>
@@ -21,7 +21,7 @@ package ca.bcit.comp2522.creature;
  *   </li>
  *   <li>Calculates the day of the week using a seven-step modular arithmetic process.</li>
  * </ul>
- *
+ * <p>
  * Example Usage:
  * <pre>
  *     Date date = new Date(1977, 10, 31);
@@ -29,7 +29,7 @@ package ca.bcit.comp2522.creature;
  *     String dayOfWeek = date.getDayOfTheWeek();  // "Monday"
  *     String isoDate = date.getYYYYMMDD();        // "1977-10-31"
  * </pre>
- *
+ * <p>
  * Notes:
  * <ul>
  *   <li>Dates before 1800 are not supported.</li>
@@ -73,36 +73,36 @@ public class Date
     private static final int NOV_CODE = 4;
     private static final int DEC_CODE = 6;
 
-    private static final int SATURDAY_RESULT = 0;
-    private static final int SUNDAY_RESULT = 1;
-    private static final int MONDAY_RESULT = 2;
-    private static final int TUESDAY_RESULT = 3;
+    private static final int SATURDAY_RESULT  = 0;
+    private static final int SUNDAY_RESULT    = 1;
+    private static final int MONDAY_RESULT    = 2;
+    private static final int TUESDAY_RESULT   = 3;
     private static final int WEDNESDAY_RESULT = 4;
-    private static final int THURSDAY_RESULT = 5;
-    private static final int FRIDAY_RESULT = 6;
+    private static final int THURSDAY_RESULT  = 5;
+    private static final int FRIDAY_RESULT    = 6;
 
-    private static final int MINIMUM_DAY = 1;
-    private static final int MAX_DAY_SHORT_MONTH = 30;
-    private static final int MAX_DAY_LONG_MONTH = 31;
-    private static final int MAX_DAY_FEB = 28;
+    private static final int MINIMUM_DAY           = 1;
+    private static final int MAX_DAY_SHORT_MONTH   = 30;
+    private static final int MAX_DAY_LONG_MONTH    = 31;
+    private static final int MAX_DAY_FEB           = 28;
     private static final int MAX_DAY_FEB_LEAP_YEAR = 29;
 
-    private static final int LEAP_YEAR_RULE = 4;
+    private static final int LEAP_YEAR_RULE        = 4;
     private static final int NON_LEAP_CENTURY_RULE = 100;
-    private static final int LEAP_CENTURY_RULE = 400;
-    private static final int NO_REMAINDER = 0;
+    private static final int LEAP_CENTURY_RULE     = 400;
+    private static final int NO_REMAINDER          = 0;
 
-    private static final int NINETEENTH_CENTURY = 1800;
-    private static final int TWENTIETH_CENTURY = 1900;
+    private static final int NINETEENTH_CENTURY   = 1800;
+    private static final int TWENTIETH_CENTURY    = 1900;
     private static final int TWENTY_FIRST_CENTURY = 2000;
 
-    private static final int NINETEENTH_CENTURY_OFFSET = 2;
+    private static final int NINETEENTH_CENTURY_OFFSET   = 2;
     private static final int TWENTY_FIRST_CENTURY_OFFSET = 6;
-    private static final int LEAP_YEAR_OFFSET = 6;
+    private static final int LEAP_YEAR_OFFSET            = 6;
 
-    private static final int DIVISOR_FOR_TWELVES_IN_YEAR = 12;
+    private static final int DIVISOR_FOR_TWELVES_IN_YEAR    = 12;
     private static final int DIVISOR_FOR_FOURS_IN_REMAINDER = 4;
-    private static final int DIVISOR_FOR_SEVENS_IN_TOTAL = 7;
+    private static final int DIVISOR_FOR_SEVENS_IN_TOTAL    = 7;
 
     private final int year;
     private final int month;
@@ -124,9 +124,9 @@ public class Date
         validateMonth(month);
         validateDay(day, month, year);
 
-        this.year = year;
+        this.year  = year;
         this.month = month;
-        this.day = day;
+        this.day   = day;
     }
 
     /**
@@ -148,8 +148,7 @@ public class Date
     {
         final String monthAsString;
 
-        switch(this.month)
-        {
+        switch (this.month) {
             case JAN -> monthAsString = "January";
             case FEB -> monthAsString = "February";
             case MAR -> monthAsString = "March";
@@ -196,7 +195,7 @@ public class Date
     public String getYYYYMMDD()
     {
         StringBuilder builder;
-        final String dateFormatted;
+        final String  dateFormatted;
 
         builder = new StringBuilder();
         builder.append(this.year)
@@ -238,49 +237,41 @@ public class Date
      */
     public String getDayOfTheWeek()
     {
-        final int lastTwoDigitsOfYear;
-        final int dayOfMonth;
-        final int numberOfTwelvesInYear;
-        final int yearRemainderAfterTwelves;
-        final int numOfFoursInRemainder;
-        final int thisMonthCode;
-        final int totalWithoutMonthCode;
-        final int totalWithMonthCode;
-        final int remainderOfTotal;
+        final int    lastTwoDigitsOfYear;
+        final int    dayOfMonth;
+        final int    numberOfTwelvesInYear;
+        final int    yearRemainderAfterTwelves;
+        final int    numOfFoursInRemainder;
+        final int    thisMonthCode;
+        final int    totalWithoutMonthCode;
+        final int    totalWithMonthCode;
+        final int    remainderOfTotal;
         final String dayOfWeek;
-        int fullYear;
+        int          fullYear;
 
 //      step 1: calculate the number of twelves year
-        fullYear = this.year;
+        fullYear   = this.year;
         dayOfMonth = this.day;
 
         if (isLeapYear(this.year) &&
-            (this.month == JAN || this.month == FEB))
-        {
+            (this.month == JAN || this.month == FEB)) {
             fullYear += LEAP_YEAR_OFFSET;
         }
 
         if (this.year >= NINETEENTH_CENTURY &&
-            this.year < TWENTIETH_CENTURY)
-        {
+            this.year < TWENTIETH_CENTURY) {
             fullYear += NINETEENTH_CENTURY_OFFSET;
         }
 
-        if (this.year >= TWENTY_FIRST_CENTURY)
-        {
+        if (this.year >= TWENTY_FIRST_CENTURY) {
             fullYear += TWENTY_FIRST_CENTURY_OFFSET;
         }
 
-        if (year >= TWENTY_FIRST_CENTURY)
-        {
+        if (year >= TWENTY_FIRST_CENTURY) {
             lastTwoDigitsOfYear = fullYear - TWENTY_FIRST_CENTURY;
-        }
-        else if(year >= TWENTIETH_CENTURY)
-        {
+        } else if (year >= TWENTIETH_CENTURY) {
             lastTwoDigitsOfYear = fullYear - TWENTIETH_CENTURY;
-        }
-        else
-        {
+        } else {
             lastTwoDigitsOfYear = fullYear - NINETEENTH_CENTURY;
         }
 
@@ -298,8 +289,7 @@ public class Date
                                 dayOfMonth;
 
         // step 5: add the month code (for jfmamjjasond: 144025036146): for october it is 1: 43 + 1 =
-        switch (this.month)
-        {
+        switch (this.month) {
             case JAN -> thisMonthCode = JAN_CODE;
             case FEB -> thisMonthCode = FEB_CODE;
             case MAR -> thisMonthCode = MAR_CODE;
@@ -321,8 +311,7 @@ public class Date
         remainderOfTotal = totalWithMonthCode % DIVISOR_FOR_SEVENS_IN_TOTAL;
 
 //      step 7: sat sun mon tue wed thu fri is 0 1 2 3 4 5 6; our 2 means Oct 31 1977 was monday
-        switch(remainderOfTotal)
-        {
+        switch (remainderOfTotal) {
             case SATURDAY_RESULT -> dayOfWeek = "Saturday";
             case SUNDAY_RESULT -> dayOfWeek = "Sunday";
             case MONDAY_RESULT -> dayOfWeek = "Monday";
@@ -348,22 +337,23 @@ public class Date
      * The method computes the day of the week, retrieves the month name,
      * and formats the full date as a readable string.
      * </p>
+     *
      * @return a formatted string (e.g., "Monday October 31, 1977")
      */
     public String getFullDate()
     {
         StringBuilder builder;
-        final String dayOfWeek;
-        final String month;
-        final int dayOfMonth;
-        final int year;
-        final String fullDate;
+        final String  dayOfWeek;
+        final String  month;
+        final int     dayOfMonth;
+        final int     year;
+        final String  fullDate;
 
-        builder = new StringBuilder();
-        dayOfWeek = this.getDayOfTheWeek();
-        month = this.getMonthAsString();
+        builder    = new StringBuilder();
+        dayOfWeek  = this.getDayOfTheWeek();
+        month      = this.getMonthAsString();
         dayOfMonth = this.day;
-        year = this.year;
+        year       = this.year;
 
         builder.append(dayOfWeek)
                .append(" ")
@@ -388,9 +378,8 @@ public class Date
     private static void validateYear(final int year)
     {
         if (year < MINIMUM_YEAR ||
-            year > CURRENT_YEAR)
-        {
-            throw new IllegalArgumentException("Invalid year:" + year);
+            year > CURRENT_YEAR) {
+            throw new IllegalArgumentException("Invalid year: " + year);
         }
     }
 
@@ -423,8 +412,7 @@ public class Date
     private static void validateMonth(final int month)
     {
         if (month < JAN ||
-            month > DEC)
-        {
+            month > DEC) {
             throw new IllegalArgumentException("Invalid month: " + month);
         }
     }
@@ -449,25 +437,22 @@ public class Date
     private static void validateDay(final int day, final int month, final int year)
     {
         if (day < MINIMUM_DAY ||
-            day > MAX_DAY_LONG_MONTH)
-        {
-            throw new IllegalArgumentException("Invalid day:" + day);
+            day > MAX_DAY_LONG_MONTH) {
+            throw new IllegalArgumentException("Invalid day: " + day);
         }
 
         if ((month == APR ||
              month == JUN ||
              month == SEP ||
              month == NOV) &&
-            day > MAX_DAY_SHORT_MONTH)
-        {
+            day > MAX_DAY_SHORT_MONTH) {
             throw new IllegalArgumentException("Invalid day for this month: " + day);
         }
 
         if (month == FEB &&
             day > (isLeapYear(year) ?
                    MAX_DAY_FEB_LEAP_YEAR :
-                   MAX_DAY_FEB))
-        {
+                   MAX_DAY_FEB)) {
             throw new IllegalArgumentException("Invalid day: " + day +
                                                " for month: " + month +
                                                " in year: " + year);

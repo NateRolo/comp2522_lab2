@@ -79,7 +79,8 @@ public class Orc extends Creature
 
         detailsBuilder
                 .append("Rage: ")
-                .append(this.rage);
+                .append(this.rage)
+                .append("\n");
 
         orcDetails = detailsBuilder.toString();
 
