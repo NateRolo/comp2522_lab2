@@ -78,7 +78,6 @@ public class Orc extends Creature
         detailsBuilder = new StringBuilder();
 
         detailsBuilder
-                .append("\n")
                 .append("Rage: ")
                 .append(this.rage);
 
@@ -149,7 +148,7 @@ public class Orc extends Creature
 
         if(rageLowerThanMinimum)
         {
-            throw new IllegalArgumentException("Rage cannot be lower than" +
+            throw new IllegalArgumentException("Rage cannot be lower than " +
                                                MINIMUM_RAGE);
         }
     }

@@ -132,12 +132,12 @@ public class Creature
            (monthBorn == CURRENT_MONTH &&
             dayBorn > CURRENT_DAY))
         {
-            ageInYears = yearBorn - CURRENT_YEAR -
+            ageInYears = CURRENT_YEAR - yearBorn -
                          BIRTHDAY_NOT_PASSED_OFFSET;
         }
         else
         {
-            ageInYears = yearBorn - CURRENT_YEAR;
+            ageInYears = CURRENT_YEAR - yearBorn;
         }
 
         return ageInYears;
