@@ -1,4 +1,4 @@
-import ca.bcit.comp2522.creature.*;
+package ca.bcit.comp2522.creature;
 
 /**
  * {@code CreatureTest} serves as a test class for
@@ -156,7 +156,6 @@ public class CreatureTest
         {
             System.out.println(ex.getMessage());
         }
-
     }
 
     /*
@@ -247,6 +246,5 @@ public class CreatureTest
         {
             System.out.println(ex.getMessage());
         }
-
     }
 }
