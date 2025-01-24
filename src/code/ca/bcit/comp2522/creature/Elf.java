@@ -32,24 +32,14 @@ package ca.bcit.comp2522.creature;
  */
 public class Elf extends Creature
 {
-    private static final int MAXIMUM_MANA;
-    private static final int MINIMUM_MANA;
-    private static final int MINIMUM_RESTORE_MANA;
+    private static final int MAXIMUM_MANA = 50;
+    private static final int MINIMUM_MANA = 0;
+    private static final int MINIMUM_RESTORE_MANA = 1;
 
-    private static final int CAST_SPELL_COST;
-    private static final int CAST_SPELL_DAMAGE;
+    private static final int CAST_SPELL_COST = 5;
+    private static final int CAST_SPELL_DAMAGE = 10;
 
     private int mana;
-
-    static
-    {
-        MAXIMUM_MANA = 50;
-        MINIMUM_MANA = 0;
-        MINIMUM_RESTORE_MANA = 1;
-
-        CAST_SPELL_COST = 5;
-        CAST_SPELL_DAMAGE = 10;
-    }
 
     /**
      * Constructs an {@code Elf} instance with the specified name,
@@ -119,7 +109,7 @@ public class Elf extends Creature
 
         insufficientMana = mana < CAST_SPELL_COST;
 
-        if (insufficientMana)
+        if(insufficientMana)
         {
             throw new LowManaException("You need at least " +
                                        CAST_SPELL_COST +
@@ -145,7 +135,7 @@ public class Elf extends Creature
 
         amountLesserThanMinimum = amount < MINIMUM_RESTORE_MANA;
 
-        if (amountLesserThanMinimum)
+        if(amountLesserThanMinimum)
         {
             throw new IllegalArgumentException("Cannot restore mana" +
                     " by value of " +
@@ -156,7 +146,7 @@ public class Elf extends Creature
 
         mana += amount;
 
-        if (manaExceedsMaximum) {
+        if(manaExceedsMaximum) {
             mana = MAXIMUM_MANA;
         }
 
@@ -177,14 +167,14 @@ public class Elf extends Creature
         manaExceedsMaximum = mana > MAXIMUM_MANA;
         manaLowerThanMinimum = mana < MINIMUM_MANA;
 
-        if (manaExceedsMaximum)
+        if(manaExceedsMaximum)
         {
             throw new IllegalArgumentException("Cannot set mana to " +
                                                "value greater than " +
                                                MAXIMUM_MANA);
         }
 
-        if (manaLowerThanMinimum)
+        if(manaLowerThanMinimum)
         {
             throw new IllegalArgumentException("Cannot set mana to " +
                                                "value less than " +
