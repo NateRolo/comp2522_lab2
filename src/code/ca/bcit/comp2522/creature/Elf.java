@@ -32,24 +32,14 @@ package ca.bcit.comp2522.creature;
  */
 public class Elf extends Creature
 {
-    private static final int MAXIMUM_MANA;
-    private static final int MINIMUM_MANA;
-    private static final int MINIMUM_RESTORE_MANA;
+    private static final int MAXIMUM_MANA = 50;
+    private static final int MINIMUM_MANA = 0;
+    private static final int MINIMUM_RESTORE_MANA = 1;
 
-    private static final int CAST_SPELL_COST;
-    private static final int CAST_SPELL_DAMAGE;
+    private static final int CAST_SPELL_COST = 5;
+    private static final int CAST_SPELL_DAMAGE = 10;
 
     private int mana;
-
-    static
-    {
-        MAXIMUM_MANA = 50;
-        MINIMUM_MANA = 0;
-        MINIMUM_RESTORE_MANA = 1;
-
-        CAST_SPELL_COST = 5;
-        CAST_SPELL_DAMAGE = 10;
-    }
 
     /**
      * Constructs an {@code Elf} instance with the specified name,
