@@ -22,28 +22,16 @@ package ca.bcit.comp2522.creature;
  */
 public class Orc extends Creature
 {
-    private static final int MAXIMUM_RAGE;
-    private static final int MINIMUM_RAGE;
+    private static final int MAXIMUM_RAGE = 30;
+    private static final int MINIMUM_RAGE = 0;
 
-    private static final int RAGE_INCREASE_INCREMENT;
-    private static final int DOUBLE_DAMAGE_THRESHOLD;
-    private static final int LOW_RAGE_VALUE;
-    private static final int DOUBLE_DAMAGE_BONUS;
-    private static final int BERSERK_DAMAGE;
+    private static final int RAGE_INCREASE_INCREMENT = 5;
+    private static final int DOUBLE_DAMAGE_THRESHOLD = 20;
+    private static final int LOW_RAGE_VALUE = 5;
+    private static final int DOUBLE_DAMAGE_BONUS = 15;
+    private static final int BERSERK_DAMAGE = 15;
 
     private int rage;
-
-    static
-    {
-        MAXIMUM_RAGE = 30;
-        MINIMUM_RAGE = 0;
-
-        RAGE_INCREASE_INCREMENT = 5;
-        DOUBLE_DAMAGE_THRESHOLD = 20;
-        LOW_RAGE_VALUE = 5;
-        DOUBLE_DAMAGE_BONUS = 15;
-        BERSERK_DAMAGE = 15;
-    }
 
     /**
      * Constructs an {@code Orc} instance with the specified name, date of
