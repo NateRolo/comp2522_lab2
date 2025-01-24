@@ -60,7 +60,6 @@ public class CreatureTest
                           50,
                           20);
 
-
         testDragonIsADragon = testDragon instanceof Dragon;
         testElfIsAnElf = testElf instanceof Elf;
         testOrcIsAnOrc = testOrc instanceof Orc;

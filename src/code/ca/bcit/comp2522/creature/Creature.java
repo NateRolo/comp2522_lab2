@@ -13,6 +13,7 @@ public class Creature
     private static final int NO_HEALTH;
 
     private static final int MINIMUM_DAMAGE;
+    private static final int MINIMUM_HEAL_AMOUNT = 0;
 
     static
     {
@@ -102,12 +103,19 @@ public class Creature
      */
     private void heal(int healAmount)
     {
+        if(healAmount < MINIMUM_HEAL_AMOUNT)
+        {
+            throw new HealingException("Cannot heal by a negative amount: " +
+                                      healAmount);
+        }
+
         health += healAmount;
 
         if(health > MAXIMUM_HEALTH)
         {
             health = MAXIMUM_HEALTH;
         }
+
     }
 
     /**
