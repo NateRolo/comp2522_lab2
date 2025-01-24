@@ -34,20 +34,11 @@ package ca.bcit.comp2522.creature;
  */
 public class Dragon extends Creature
 {
-    private static final int MINIMUM_FIRE_POWER;
-    private static final int MAXIMUM_FIRE_POWER;
-    private static final int BREATHE_FIRE_COST;
-    private static final int BREATHE_FIRE_DAMAGE;
-    private static final int MINIMUM_RESTORE_FIREPOWER;
-
-    static
-    {
-        MINIMUM_FIRE_POWER = 0;
-        MAXIMUM_FIRE_POWER = 100;
-        BREATHE_FIRE_COST = 10;
-        BREATHE_FIRE_DAMAGE = 20;
-        MINIMUM_RESTORE_FIREPOWER = 1;
-    }
+    private static final int MINIMUM_FIRE_POWER = 0;
+    private static final int MAXIMUM_FIRE_POWER = 100;
+    private static final int BREATHE_FIRE_COST = 10;
+    private static final int BREATHE_FIRE_DAMAGE = 20;
+    private static final int MINIMUM_RESTORE_FIREPOWER = 1;
 
     private int firePower;
 
@@ -119,11 +110,15 @@ public class Dragon extends Creature
      *     throw a checked LowFirePowerException.
      * </p>
      *
-     * @throws LowFirePowerException if dragon does not have enough fire power.
+     * @throws LowFirePowerException if dragon does not have enough firepower.
      */
     public void breatheFire(final Creature opponent) throws LowFirePowerException
     {
-        if(firePower < BREATHE_FIRE_COST)
+        final boolean powerLowerThanCost;
+
+        powerLowerThanCost = firePower < BREATHE_FIRE_COST;
+
+        if(powerLowerThanCost)
         {
             throw new LowFirePowerException("You need at least " +
                                             BREATHE_FIRE_COST +
@@ -144,7 +139,13 @@ public class Dragon extends Creature
      */
     public void restoreFirePower(int amount)
     {
-        if(amount < MINIMUM_RESTORE_FIREPOWER)
+        final boolean amountLowerThanMinimum;
+        final boolean powerHigherThanMaximum;
+
+        amountLowerThanMinimum = amount < MINIMUM_FIRE_POWER;
+        powerHigherThanMaximum = firePower > MAXIMUM_FIRE_POWER;
+
+        if(amountLowerThanMinimum)
         {
             throw new IllegalArgumentException("Cannot restore fire power" +
                                                " by value of " +
@@ -153,7 +154,7 @@ public class Dragon extends Creature
 
         firePower += amount;
 
-        if(firePower > MAXIMUM_FIRE_POWER)
+        if(powerHigherThanMaximum)
         {
             firePower = MAXIMUM_FIRE_POWER;
         }
@@ -168,14 +169,20 @@ public class Dragon extends Creature
      */
     private static void validateFirePower(final int firePower)
     {
-        if(firePower < MINIMUM_FIRE_POWER)
+        final boolean powerLowerThanMinimum;
+        final boolean powerHigherThanMaximum;
+
+        powerLowerThanMinimum = firePower < MINIMUM_FIRE_POWER;
+        powerHigherThanMaximum = firePower > MAXIMUM_FIRE_POWER;
+
+        if(powerLowerThanMinimum)
         {
             throw new IllegalArgumentException("Fire power cannot " +
                                                "be less than " +
                                                 MINIMUM_FIRE_POWER);
         }
 
-        if(firePower > MAXIMUM_FIRE_POWER)
+        if(powerHigherThanMaximum)
         {
             throw new IllegalArgumentException("Fire power cannot " +
                                                "be more than " +
