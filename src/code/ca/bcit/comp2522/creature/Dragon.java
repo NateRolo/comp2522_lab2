@@ -116,7 +116,7 @@ public class Dragon extends Creature
     {
         final boolean powerLowerThanCost;
 
-        powerLowerThanCost = firePower < BREATHE_FIRE_COST
+        powerLowerThanCost = firePower < BREATHE_FIRE_COST;
 
         if(powerLowerThanCost)
         {
