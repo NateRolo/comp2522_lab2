@@ -34,20 +34,11 @@ package ca.bcit.comp2522.creature;
  */
 public class Dragon extends Creature
 {
-    private static final int MINIMUM_FIRE_POWER;
-    private static final int MAXIMUM_FIRE_POWER;
-    private static final int BREATHE_FIRE_COST;
-    private static final int BREATHE_FIRE_DAMAGE;
-    private static final int MINIMUM_RESTORE_FIREPOWER;
-
-    static
-    {
-        MINIMUM_FIRE_POWER = 0;
-        MAXIMUM_FIRE_POWER = 100;
-        BREATHE_FIRE_COST = 10;
-        BREATHE_FIRE_DAMAGE = 20;
-        MINIMUM_RESTORE_FIREPOWER = 1;
-    }
+    private static final int MINIMUM_FIRE_POWER = 0;
+    private static final int MAXIMUM_FIRE_POWER = 100;
+    private static final int BREATHE_FIRE_COST = 10;
+    private static final int BREATHE_FIRE_DAMAGE = 20;
+    private static final int MINIMUM_RESTORE_FIREPOWER = 1;
 
     private int firePower;
 
