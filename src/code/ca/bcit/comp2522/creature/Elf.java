@@ -109,7 +109,7 @@ public class Elf extends Creature
 
         insufficientMana = mana < CAST_SPELL_COST;
 
-        if (insufficientMana)
+        if(insufficientMana)
         {
             throw new LowManaException("You need at least " +
                                        CAST_SPELL_COST +
@@ -135,7 +135,7 @@ public class Elf extends Creature
 
         amountLesserThanMinimum = amount < MINIMUM_RESTORE_MANA;
 
-        if (amountLesserThanMinimum)
+        if(amountLesserThanMinimum)
         {
             throw new IllegalArgumentException("Cannot restore mana" +
                     " by value of " +
@@ -146,7 +146,7 @@ public class Elf extends Creature
 
         mana += amount;
 
-        if (manaExceedsMaximum) {
+        if(manaExceedsMaximum) {
             mana = MAXIMUM_MANA;
         }
 
@@ -167,14 +167,14 @@ public class Elf extends Creature
         manaExceedsMaximum = mana > MAXIMUM_MANA;
         manaLowerThanMinimum = mana < MINIMUM_MANA;
 
-        if (manaExceedsMaximum)
+        if(manaExceedsMaximum)
         {
             throw new IllegalArgumentException("Cannot set mana to " +
                                                "value greater than " +
                                                MAXIMUM_MANA);
         }
 
-        if (manaLowerThanMinimum)
+        if(manaLowerThanMinimum)
         {
             throw new IllegalArgumentException("Cannot set mana to " +
                                                "value less than " +
